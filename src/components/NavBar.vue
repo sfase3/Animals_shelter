@@ -9,8 +9,8 @@
                               </span>
                         </div>
                         <ul>
-                              <li>About the shelter</li>
-                              <li @click="$router.push('/pets')">Pets</li>
+                              <li @click="$router.push('/')">About the shelter</li>
+                              <li @click="$router.push('/pets/1')">Pets</li>
                               <li>To help the shelter</li>
                               <li>Contacts</li>
                         </ul>

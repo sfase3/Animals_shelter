@@ -1,7 +1,7 @@
 <template>
   <div  id="app">
   <NavBar></NavBar>
-  <router-view></router-view>
+  <router-view  :key="$route.path"></router-view>
 <Footer></Footer>
 
 
@@ -16,12 +16,30 @@ import MainPage from './components/MainPage.vue';
 import NavBar from './components/NavBar.vue';
 import Footer from './components/Footer.vue';
 
+import { mapActions,mapMutations } from 'vuex';
+
+
 export default {
+data(){
+      return{
+
+      }
+},
 components: {
     MainPage,
     NavBar,
     Footer
 },
+mounted(){
+//       this.setAllPage()
+//  this.fetchAnimals()
+this.setAllPage()
+},
+methods:{
+       ...mapActions(['fetchAnimals']),
+       ...mapMutations(['setAllPage']),
+       
+}
 }
 </script>
 
@@ -111,14 +129,14 @@ body{
 }
 
 .footer_content_item{
-      padding-top: 15px;
+     
       padding-bottom: 25px;
      height: 322px;
      display: flex;
      flex-direction: column;
      justify-content: space-between;
      font-size: 20px;
-line-height: 45px;
+
 font-weight: 400;
 letter-spacing: 0.06em;
 color: #f1cdb3;
@@ -799,5 +817,17 @@ font-weight: 400;
 
 }
 
+
+@media only screen and (max-width: 1250px)  {
+  .footer_content{
+      width: 100%; 
+  margin: 0 !important;
+
+}
+.footer_content_item{
+      padding-right: 25px;
+}
+
+}
 
 </style>

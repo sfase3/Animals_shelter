@@ -1,5 +1,5 @@
-let animals = {
-      "Jennifer":{
+let animals = [
+      {
             name: 'Jennifer',
             animal: 'dog',
             poroda: 'Pooch + Labrador',
@@ -8,11 +8,11 @@ let animals = {
             months_year: 'months',
             diseases: false,
             parasites: false,
-            img_url: () => {
-                  return `@/img/pets_imgs/${this.name}.png`
-                  }}
+            img_url: `.png`
+                  
+            }
                   ,
-      "Charly":{
+      {
             name: 'Charly',
             poroda: 'Pooch',
             animal: 'dog',
@@ -21,11 +21,10 @@ let animals = {
             months_year: 'months',
             diseases: false,
             parasites: false,
-            img_url: () => {
-                  return `@/img/pets_imgs/${this.name}.png`
-            }
+            img_url: `.png`
+            
       },
-      "Katrine":{
+      {
             name: 'Katrine',
             poroda: 'British',
             animal: 'cat',
@@ -34,11 +33,10 @@ let animals = {
             months_year: 'months',
             diseases: false,
             parasites: false,
-            img_url: () => {
-                  return `@/img/pets_imgs/${this.name}.png`
-            }
+            img_url: `.png`
+            
       },
-      "Woody":{
+      {
             name: 'Woody',
             poroda: 'British',
             animal: 'dog',
@@ -47,11 +45,10 @@ let animals = {
             months_year: 'year',
             diseases: false,
             parasites: false,
-            img_url: () => {
-                  return `@/img/pets_imgs/${this.name}.png`
-            }
+            img_url: `.png`
+            
       },
-      "Sophia":{
+      {
             name: 'Sophia',
             poroda: 'British',
             animal: 'dog',
@@ -60,11 +57,10 @@ let animals = {
             months_year: 'months',
             diseases: false,
             parasites: false,
-            img_url: () => {
-                  return `@/img/pets_imgs/${this.name}.png`
-            }
+            img_url: `.png`
+            
       },
-      "Timmy":{
+      {
             name: 'Timmy',
             poroda: 'British',
             animal: 'cat',
@@ -73,11 +69,10 @@ let animals = {
             months_year: 'months',
             diseases: false,
             parasites: false,
-            img_url: () => {
-                  return `@/img/pets_imgs/${this.name}.png`
-            }
+            img_url: `.png`
+            
       },
-      "Scarlett":{
+      {
             name: 'Scarlett',
             poroda: 'British',
             animal: 'dog',
@@ -86,11 +81,10 @@ let animals = {
             months_year: 'months',
             diseases: false,
             parasites: false,
-            img_url: () => {
-                  return `@/img/pets_imgs/${this.name}.png`
-            }
+            img_url: () => `.png`
+
       },
-      "Freddie":{
+      {
             name: 'Freddie',
             poroda: 'British',
             animal: 'cat',
@@ -99,11 +93,10 @@ let animals = {
             months_year: 'months',
             diseases: false,
             parasites: false,
-            img_url: () => {
-                  return `@/img/pets_imgs/${this.name}.png`
-            }
+            img_url: () => `.png`
+            
       },
-      "Valero":{
+      {
             name: 'Valero',
             poroda: 'British',
             animal: 'cat',
@@ -112,11 +105,9 @@ let animals = {
             months_year: 'years',
             diseases: false,
             parasites: false,
-            img_url: () => {
-                  return `@/img/pets_imgs/${this.name}.jpg`
-            }
+            img_url: () => `.jpg`
       },
-      "Jusha":{
+      {
             name: 'Jusha',
             poroda: 'British',
             animal: 'dog',
@@ -125,11 +116,10 @@ let animals = {
             months_year: 'months',
             diseases: false,
             parasites: false,
-            img_url: () => {
-                  return `@/img/pets_imgs/${this.name}.jpg`
-            }
+            img_url: () => `.jpg`
+            
       },
-      "Vovk":{
+      {
             name: 'Vovk',
             poroda: 'British',
             animal: 'dog',
@@ -138,11 +128,9 @@ let animals = {
             months_year: 'years',
             diseases: false,
             parasites: false,
-            img_url: () => {
-                  return `@/img/pets_imgs/${this.name}.jpg`
-            }
+            img_url: () => `.jpg`
       },
-      "Major":{
+      {
             name: 'Major',
             poroda: 'British',
             animal: 'cat',
@@ -151,9 +139,10 @@ let animals = {
             months_year: 'years',
             diseases: false,
             parasites: false,
-            img_url: () => {
-                  return `@/img/pets_imgs/${this.name}.jpg`
-            }
+            img_url: `.jpg`
+            
       },
 
-}
+]
+
+export default animals

@@ -23,7 +23,6 @@
                   <div class="slider_container">
                   <h1>Our friends who are looking for a house</h1>
                   <div class="flex_row">
-                        <div class="div_arrow"><span class="arrow"><svg  xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16"> <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/> </svg> </span></div>
                         <div class="animal">
                               <img src="@/img/place_for_photo_11857.png" alt="">
                               <h3>Katrine</h3>
@@ -39,11 +38,10 @@
                               <h3>Woody</h3>
                               <div class="btn_anim"><button>Learn more</button></div>
                         </div>
-                        <div class="div_arrow"><span class="arrow"><svg  xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16"> <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/> </svg></span></div>
                   </div>
 
-                  <div class="btn_down">
-                        <button>Get to know the rest</button>
+                  <div class="btn_down l">
+                        <button  @click="$router.push('/pets/1')">Get to know the rest</button>
                   </div>
 
             </div>
@@ -130,21 +128,30 @@ et malesuada fames ac ante ipsum primis in faucibus.
                   </div>
             </div>
       
-
+            
             
 </template>
 
 <script>
+
+
 export default {
 name: 'MainPage',
 methods:{
       getInfo(name){
             
       }
+},
+components: {
+     
 }
 }
 </script>
 
 <style>
+
+
+
+
 
 </style>
