@@ -26,22 +26,19 @@
                         <div class="animal">
                               <img src="@/img/place_for_photo_11857.png" alt="">
                               <h3>Katrine</h3>
-                              <div class="btn_anim"><button>Learn more</button></div>
                         </div>
                         <div class="animal">
                               <img src="@/img/place_for_photo_11867.png" alt="">
                               <h3>Jennifer</h3>
-                              <div class="btn_anim"><button>Learn more</button></div>
                         </div>
                         <div class="animal">
                               <img src="@/img/place_for_photo_11877.png" alt="">
                               <h3>Woody</h3>
-                              <div class="btn_anim"><button>Learn more</button></div>
                         </div>
                   </div>
 
                   <div class="btn_down l">
-                        <button  @click="$router.push('/pets/1')">Get to know the rest</button>
+                        <button class="btn_all" @click="$router.push('/pets/1')">Get to know the rest</button>
                   </div>
 
             </div>
@@ -148,10 +145,12 @@ components: {
 }
 </script>
 
-<style>
+<style scoped>
 
 
-
+.btn_all:hover{
+      background-color: #f1cdb3;
+}
 
 
 </style>

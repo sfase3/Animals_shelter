@@ -11,8 +11,7 @@
                         <ul>
                               <li @click="$router.push('/')">About the shelter</li>
                               <li @click="$router.push('/pets/1')">Pets</li>
-                              <li>To help the shelter</li>
-                              <li>Contacts</li>
+                              
                         </ul>
                   </div>
 
@@ -22,7 +21,7 @@
                               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras gravida 
                                     est in porttitor  porttitor. Duis sodales elementum ipsum, vehicula 
                                     condimentum erat fringilla et.</p>
-                              <button>Make a friend</button>
+                              <button @click="friend_make" :class="{ 'green' : friend}">{{be_friend}}</button>
                               </div>
 
             </div>
@@ -31,10 +30,31 @@
 
 <script>
 export default {
-name: 'Navigation'
+name: 'Navigation',
+data(){
+      return{
+            friend:false,
+            friend_txt: '✓ You are my friend',
+
+      }
+},
+computed:{
+   be_friend(){
+      return this.friend ? this.friend_txt : 'Be a friend'
+   }
+},
+methods:{
+      friend_make(){
+            this.friend = !this.friend;
+      }
+}
 }
 </script>
 
 <style>
-
+.green{
+background-color: green !important;
+    font-size: medium;
+    transition: background-color 0.5s;
+}
 </style>

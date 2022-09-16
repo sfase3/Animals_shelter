@@ -220,14 +220,6 @@ justify-content: center;
     overflow: hidden;
 }
 
-.animal{
-      width: 270px;
-height: 424px;
-background-color: #fafafa;
-border-radius: 9px;
-}
-
-
 .slider{
       overflow: hidden;
       width: 80%;
@@ -364,7 +356,7 @@ color: #545454;
 
 .animal {
       width: 270px;
-height: 424px;
+height: 350px;
 background-color: #fafafa;
 border-radius: 9px;
 margin-left: 20px;

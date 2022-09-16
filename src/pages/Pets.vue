@@ -224,6 +224,11 @@ border: 2px solid #f1cdb3;
 border-radius: 26px;
 }
 
+.btn_learn:hover{
+      background-color: #f1cdb3;
+      cursor: pointer
+}
+
 .div_btn_learn{
 margin: auto;
 }
