@@ -38,7 +38,7 @@
                   </div>
 
                   <div class="btn_down l">
-                        <button class="btn_all" @click="$router.push('/pets/1')">Get to know the rest</button>
+                        <button class="btn_all" @click="$router.push('/pets/1');this.scroll_undo()">Get to know the rest</button>
                   </div>
 
             </div>
@@ -139,6 +139,7 @@ methods:{
             
       }
 },
+props:['scroll_undo'],
 components: {
      
 }

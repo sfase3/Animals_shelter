@@ -1,8 +1,12 @@
 <template>
   <div  id="app">
-  <NavBar></NavBar>
-  <router-view  :key="$route.path"></router-view>
-<Footer></Footer>
+
+  <div ref="nav"><NavBar :user="user_store"   :scroll_fnc="this.goto"></NavBar></div>
+  
+  <div ref="scroll" >
+      <router-view :scroll_undo="this.undo" :key="$route.path"></router-view>
+  </div>
+      <Footer></Footer>
 
 
   </div>        
@@ -15,14 +19,14 @@
 import MainPage from './components/MainPage.vue';
 import NavBar from './components/NavBar.vue';
 import Footer from './components/Footer.vue';
-
-import { mapActions,mapMutations } from 'vuex';
-
+import { onBeforeMount,onMounted } from 'vue';
+import { mapActions,mapMutations,mapState, useStore,} from 'vuex';
+import store from './store';
 
 export default {
 data(){
       return{
-
+            user_store: store.state.store_user
       }
 },
 components: {
@@ -31,14 +35,28 @@ components: {
     Footer
 },
 mounted(){
-//       this.setAllPage()
-//  this.fetchAnimals()
+
+
 this.setAllPage()
+
 },
+
 methods:{
+      
        ...mapActions(['fetchAnimals']),
        ...mapMutations(['setAllPage']),
-       
+       ...mapState('store_user',['user','nickname']),
+       goto() {
+        window.scrollTo({
+            left: 0,top: this.$refs.scroll.offsetTop-(this.$refs.scroll.offsetTop/10),behavior:'smooth'
+      });
+    },
+    undo(){
+      
+      window.scrollTo({
+            left: 0,top: this.$refs.nav.clientHeight,behavior:'smooth'
+      });
+    }
 }
 }
 </script>
@@ -83,17 +101,17 @@ body{
 }
 
 ::-webkit-scrollbar {
-      width: 10px;
+      width: 6px;
     }
     
     ::-webkit-scrollbar-track {
-      background-color: transparent;
+      background-color:rgb(27,26,28,0.85);
     }
     
     ::-webkit-scrollbar-thumb {
-      background-color: #d6dee1;
+      background-color: rgb(157, 148, 131,0.5);
       border-radius: 10px;
-      border: 3px solid transparent;
+      border: 1px solid transparent;
       background-clip: content-box;
     }
     
@@ -103,8 +121,8 @@ body{
 
 
     li:hover{
-      border-bottom: 3px solid #f1cdb3;
-      border-radius: 1.5px;
+      border-color:#f1cdb3;
+      cursor: pointer;
       
     }
 
@@ -120,8 +138,8 @@ body{
 }
 
 .footer_content_item img{
-  height: 32px;
-  width: 40px;
+  height: 22px;
+  width: 28px;
 }
 
 .btn_anim button:hover{
@@ -292,6 +310,8 @@ color: #f1cdb3;
 
 li{
       margin-left: 25px;
+      border-bottom: 3px solid transparent;
+      border-radius: 1.5px;
 }
 
 .header_content_center{
@@ -444,9 +464,7 @@ font-weight: 400;
           
       }
 
-      .slider_container{
-           
-      }
+     
 
       .btn_down{
             margin: 0;
@@ -464,7 +482,10 @@ font-weight: 400;
            
       }
 
-      
+      .footer_content_item img {
+    height: 20px;
+    width: 25px;
+}
 
       .icons_icon_item{
             flex-direction: row;
@@ -488,9 +509,7 @@ font-weight: 400;
             display: none;
       }
       
-      .slider{
-            
-      }
+      
 
       .slider h1{
             margin-top: 0;
@@ -561,7 +580,7 @@ font-weight: 400;
       }
 
       .header{
-            height: 700px !important;
+            height: 600px !important;
       }
 
       .header_content{
@@ -569,7 +588,7 @@ font-weight: 400;
       }
 
       .header_content_center {
-            padding-top: 0px !important;
+            padding-top: 175px !important;
       }  
 
       .header_content_center p{
@@ -606,11 +625,12 @@ font-weight: 400;
             margin: 0;
             padding-bottom: 20px;
             font-size: 20px;
+            border: 0
       }
 
       .down  img {
-            width: 280px;
-            height: 250px;
+            width: 300px;
+            height: 150px;
             
       }
 
@@ -634,9 +654,7 @@ font-weight: 400;
             margin: auto !important;
       }
 
-      .slider_container{
-           
-      }
+    
 
       .btn_down{
             margin: 0;
@@ -678,9 +696,7 @@ font-weight: 400;
             display: none;
       }
       
-      .slider{
-            
-      }
+      
 
       .slider h1{
             margin-top: 0;
@@ -723,9 +739,6 @@ font-weight: 400;
             height: 275px;
       }
 
-      .about_shelter p {
-            
-      }
 
       .card {
             margin: auto
@@ -749,6 +762,11 @@ font-weight: 400;
             text-align: center;
       }
 
+      .modal_img{
+            width: 270px !important;
+    height: 300px !important;
+      }
+
       .header{
             height: 700px !important;
       }
@@ -757,9 +775,10 @@ font-weight: 400;
             height: 100%;
       }
 
-      .header_content_center {
-            padding-top: 0px !important;
-      }  
+      .icons_icon_item h4 {
+     margin: 0; 
+}
+ 
 
       .header_content_center p{
             margin-top: 0 ;
@@ -799,7 +818,7 @@ font-weight: 400;
 
       .down  img {
             width: 280px;
-            height: 250px;
+            height: 150px;
             
       }
 
@@ -817,7 +836,7 @@ font-weight: 400;
 
 }
 .footer_content_item{
-      padding-right: 25px;
+      padding-right: 0;
 }
 
 }

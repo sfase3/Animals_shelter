@@ -1,19 +1,22 @@
 import { createStore } from 'vuex'
 import animals from '@/animals_info/animals';
 import mutations from './mutations';
+import store_user from './user';
+import router from '../router'
+import {auth} from '../firebase'
+import { 
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut 
+} from 'firebase/auth';
+//firebase
 
 
-function serializeRespons(list){
-  return list.reduce((acc,list)=>{
-    
-        acc[acc.name] = list;
-        return acc
-  },{})
-  }
+
 
 const {LIST} = mutations;
 
-export default createStore({
+ const store =  createStore({
   state: {
     animals_list: animals,
     page: 1,
@@ -42,7 +45,7 @@ export default createStore({
     },
 
     setAllPage(state){
-      console.log('essss')
+      
       state.all_pages = Math.ceil((state.animals_list.length+1)/state.limit)
     }
 
@@ -55,14 +58,14 @@ export default createStore({
       root: true
 },
    fetchAnimals({getters,commit}){
-    console.log('hello')
+    
     const{currentPage,animPerPage,slicedIDs} = getters;
     const from = (currentPage*animPerPage)- animPerPage
     const to = currentPage * animPerPage
 
     const animToFetch = slicedIDs(from,to)
 
-    console.log(animToFetch)
+    
 
     commit(LIST,animToFetch)
 
@@ -71,5 +74,10 @@ export default createStore({
    }
   },
   modules: {
+    store_user
   }
 })
+
+store.dispatch('fetchUser');
+
+export default store

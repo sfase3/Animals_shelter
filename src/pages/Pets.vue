@@ -1,7 +1,7 @@
 <template>
-      <div v-if="boole" @click.stop="hideInfo" style="width:100%">
+      <div ref="modal" v-if="boole" @click.stop="hideInfo();this.scroll_undo()" style="width:100%">
             <div  class="modal">
-                  <div class="modal_img"><img :src="require(`@/img/pets_imgs/${this.name}.png`)" alt=""></div>
+                  <div class="modal_img"><img  :src="require(`@/img/pets_imgs/${this.name}.png`)" :class="img_modal" alt=""></div>
                   <div class="modal_info">
                         <h2>{{this.name}}</h2>
                         <h4>{{this.poroda}}</h4>
@@ -30,7 +30,7 @@
                               <h2>{{pets.name}}</h2>
                         </div>
                         <div class="div_btn_learn">
-                              <button class="btn_learn" @click="getMore(pets)">
+                              <button class="btn_learn" @click="getMore(pets);this.scroll_undo()">
                                     Learn More
                               </button>
                         </div>
@@ -38,7 +38,7 @@
             </div>
             <div class="footer_pagination">
                   <ul class="pagination">
-                        <li @click="$router.push(`/pets/${numPage}`)" class="page-item" v-for="numPage in all_pages" :key="numPage" :class="{'active_page': numPage === page}">{{numPage}}</li>
+                        <li @click="$router.push(`/pets/${numPage}`);this.scroll_undo()" class="page-item" v-for="numPage in all_pages" :key="numPage" :class="{'active_page': numPage === page}">{{numPage}}</li>
                       </ul>
             </div>
       
@@ -52,6 +52,7 @@ import { mapState,mapMutations,mapActions } from 'vuex';
 export default {
 el: '#pets',
 name: 'Pets',
+props: ['scroll_undo'],
 data(){
       return{
       boole: false,
@@ -91,6 +92,8 @@ methods:{
             this.parasite = pets.parasites
       },
       
+    
+
       hideInfo(){
             this.boole= false
             this.poroda = ''
@@ -98,6 +101,7 @@ methods:{
             this.age = '' 
             this.months = ''
             this.info = ''
+            
       }
 }
 }
@@ -243,6 +247,16 @@ margin: auto;
 .footer_content_item{
       padding-right: 25px;
 }
+
+}
+
+
+
+@media only screen and (max-width: 450px)  {
+ .img_modal{
+      width: 270px !important;
+      height: 270px !important;
+ }
 
 }
 

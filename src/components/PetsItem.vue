@@ -1,6 +1,6 @@
 <template>
   <div @getPet="getPetItem">
-ss
+
   </div>
 </template>
 
