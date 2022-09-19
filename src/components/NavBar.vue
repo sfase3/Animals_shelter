@@ -15,9 +15,11 @@
     <ul class="menu" v-if="this.user.user" >
       <li @click="$router.push('/');this.scroll_fnc()">About the shelter</li>
  <li @click="$router.push('/pets/1');this.scroll_fnc()">Pets</li>
- <li @click="$router.push('/login');this.scroll_fnc()" class="dropdown"><span class="dropbtn">{{this.user.nickname}}</span>
+ <li @click="$router.push('/set');this.scroll_fnc()" class="mob" style="color:#f1cdb3">{{this.user.nickname}}</li>
+ <li @click="this.scroll_fnc()" class="dropdown" style="color:#f1cdb3"><span class="dropbtn">{{this.user.nickname}}</span>
   <div class="dropdown-content">
-    <span >Settings</span>
+
+    <span @click="$router.push('/set');this.scroll_fnc()">Settings</span>
     <span  @click="this.logout">Log out</span>
     
   </div>
@@ -88,8 +90,9 @@ methods:{
 
 <style>
 
-
-
+.mob{
+  display: none;
+}
 
 .dropdown-content {
   display: none;
@@ -197,6 +200,10 @@ methods:{
 }
 
 @media (max-width: 700px) {
+  .dropdown{
+    display: none !important;
+  }
+  
   .menu-button-container {
     display: flex;
   }

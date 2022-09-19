@@ -6,6 +6,7 @@ import MainPage from '@/components/MainPage.vue'
 import Pets from '@/pages/Pets.vue'
 import Login from '@/views/Login.vue'
 import { auth } from '@/firebase'
+import Settings from '@/components/Settings.vue'
 
 const routes = [
   {
@@ -28,7 +29,15 @@ const routes = [
     path: "/login",
     component: Login,
     
-  }
+  },
+  {
+    path: '/set',
+    
+    component: Settings,
+    meta: {
+      requiresAuth: true
+    }
+  },
 ]
 
 const router = createRouter({

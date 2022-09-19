@@ -11,7 +11,8 @@ import {
 const store_user = {
       state: {
             user: null,
-            nickname: null
+            nickname: null,
+            load: true
       },
       getters: {
 
@@ -30,6 +31,14 @@ const store_user = {
             }
       },
       actions:{
+
+            async updateNick({commit},nickname){
+              await updateProfile(auth.currentUser, {
+                displayName: nickname
+              })
+              commit('setNick',auth.currentUser.displayName) 
+            },
+
             async login ({ commit }, details) {
                   
                   const { email, password } = details
@@ -106,9 +115,10 @@ const store_user = {
                   router.push('/login')
                   
                 },
-                fetchUser ({ commit }) {
+                fetchUser ({ commit,state}) {
                   
                   auth.onAuthStateChanged(async user => {
+                    
                     if (user === null) {
                       commit('clearUser')
                       
@@ -116,12 +126,16 @@ const store_user = {
                         
                      commit('setUser', user)
                      commit('setNick',user.displayName) 
-                        
+                     
                       if (router.isReady() && router.currentRoute.value.path === '/login') {
                         router.push('/')
                       }
+                      
+                      
                     }
                   })
+                  
+                 
                 },
                
       }

@@ -115,7 +115,7 @@
                               font-weight: 400;
                               letter-spacing: 0.06em;
                               
-                              color: #292929;">8380 2880 8028 8791 7435</span>
+                              color: #292929;">4441 1144 4751 2359</span>
                         </div>
                         <p class="info_p">
                               Legal information and lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas a ipsum at libero sagittis dignissim sed 

@@ -1,12 +1,15 @@
 <template>
   <div  id="app">
-
-  <div ref="nav"><NavBar :user="user_store"   :scroll_fnc="this.goto"></NavBar></div>
+<Preloader v-if="this.load"></Preloader>
+<div v-else>
+      <div ref="nav"><NavBar :user="user_store"   :scroll_fnc="this.goto"></NavBar></div>
   
   <div ref="scroll" >
-      <router-view :scroll_undo="this.undo" :key="$route.path"></router-view>
+      <router-view :scroll_undo="this.undo" :user="user_store" :key="$route.path"></router-view>
   </div>
       <Footer></Footer>
+</div>
+  
 
 
   </div>        
@@ -19,33 +22,39 @@
 import MainPage from './components/MainPage.vue';
 import NavBar from './components/NavBar.vue';
 import Footer from './components/Footer.vue';
+import PreloaderVue from './views/Preloader.vue';
 import { onBeforeMount,onMounted } from 'vue';
 import { mapActions,mapMutations,mapState, useStore,} from 'vuex';
 import store from './store';
+import Preloader from './views/Preloader.vue';
 
 export default {
 data(){
       return{
-            user_store: store.state.store_user
+            user_store: store.state.store_user,
+           load: true
       }
 },
 components: {
     MainPage,
     NavBar,
-    Footer
+    Footer,
+    Preloader
 },
 mounted(){
-
-
-this.setAllPage()
-
+    
+      this.setAllPage()
+      setTimeout(this.givePAGE,1000)
 },
 
 methods:{
-      
+      givePAGE(){
+            this.load = false
+      },
        ...mapActions(['fetchAnimals']),
+       
        ...mapMutations(['setAllPage']),
-       ...mapState('store_user',['user','nickname']),
+       ...mapState('store_user',['user','nickname','load']),
        goto() {
         window.scrollTo({
             left: 0,top: this.$refs.scroll.offsetTop-(this.$refs.scroll.offsetTop/10),behavior:'smooth'
@@ -73,6 +82,8 @@ methods:{
   color: #2c3e50;
 }
 
+
+
 *{
       list-style-type: none; 
       
@@ -80,9 +91,11 @@ methods:{
 
 
 
-body{
+html , body{
+      
       margin: 0;
       padding: 0;
+    
     
 }
 
